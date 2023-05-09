@@ -31,9 +31,9 @@ if(args.r || args.rules) {
     `)
     process.exit(0);
 }
-let result = rps(shot);
-let shot = args._[0];
 
+let shot = args._[0];
+let result = rps(shot);
 if ( result instanceof Error) {
   console.log(
       `Usage: node-rps [SHOT]
