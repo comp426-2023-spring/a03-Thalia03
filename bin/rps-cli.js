@@ -2,10 +2,13 @@
 import minimist from "minimist";
 import { rps } from "../lib/rpsls.js";
 
-const args = minimist(process.argv.slice(2), {string: ['h', 'r']});
+const args = minimist(process.argv.slice(2));
 
-const Help = function() {
-    const userHelp = `
+
+if(args.h || args.help) {
+
+    console.log(`
+
     Usage: node-rps [SHOT]
     Play Rock Paper Scissors (RPS)
       -h, --help      display this help message and exit
@@ -16,35 +19,46 @@ const Help = function() {
       node-rps rock   Return JSON with results for RPS played against a simulated opponent.
                       e.g {"player":"rock","opponent":"scissors","result":"win"}
     `
-    console.log(userHelp);
+    ); process.exit(0);
 }
 
-const Rules = function() {
-    const gameRules = `
+if(args.r || args.rules) {
+    console.log( `
     Rules for Rock Paper Scissors:
       - Scissors CUTS Paper
       - Paper COVERS Rock
       - Rock CRUSHES Scissors
-    `
-    console.log(gameRules);
+    `)
+    process.exit(0);
+}
+let result = rps(shot);
+let shot = args._[0];
+
+if ( result instanceof Error) {
+  console.log(
+      `Usage: node-rps [SHOT]
+      Play Rock Paper Scissors (RPS)
+      
+        -h, --help      display this help message and exit
+        -r, --rules     display the rules and exit
+      
+      Examples:
+        node-rps        Return JSON with single player RPS result.
+                        e.g. {"player":"rock"}
+        node-rps rock   Return JSON with results for RPS played against a simulated opponent.
+                        e.g {"player":"rock","opponent":"scissors","result":"win"}`
+  );
+  console.log(
+    `Rules for Rock Paper Scissors:
+
+    - Scissors CUTS Paper
+    - Paper COVERS Rock
+    - Rock CRUSHES Scissors`
+);
+}   
+
+else {
+  console.log(JSON.stringify(result));
 }
 
-switch (true) {
-    case args.h !== undefined || args.help:
-      Help();
-      process.exit();
-      break;
-    case args.r !== undefined || args.rules:
-      Rules();
-      process.exit();
-      break;
-    default:
-      try {
-        console.log(JSON.stringify(rps(args._[0])));
-      } catch(e) {
-        console.error(e.message); 
-        Help();
-        Rules();
-        process.exit(1);
-      }
-  }
+
