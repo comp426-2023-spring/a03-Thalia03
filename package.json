@@ -14,7 +14,7 @@
   },
   "bin": {
     "node-rps": "bin/rps-cli.js",
-    "node-rpsls": "rpsls-cli.js"
+    "node-rpsls": "bin/rpsls-cli.js"
   },
   "dependencies": {
     "express": "^4.18.2",
