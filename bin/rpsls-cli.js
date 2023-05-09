@@ -33,7 +33,7 @@ if(args.r || args.rules) {
 }
 
 let result = rpsls(shot);
-let shot = args[0];
+let shot = args._[0];
 
 if ( result instanceof Error) {
   console.log(
