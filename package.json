@@ -17,6 +17,7 @@
     "node-rpsls": "rpsls-cli.js"
   },
   "dependencies": {
+    "express": "^4.18.2",
     "minimist": "^1.2.8",
     "node-rpsls": "^1.0.0"
   }
