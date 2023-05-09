@@ -5,8 +5,7 @@
   "main": "./lib/rpsls.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node rpsls.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
 
   },
   "author": "thalia03",
@@ -20,7 +19,6 @@
     "node-rpsls": "bin/rpsls-cli.js"
   },
   "dependencies": {
-    "express": "^4.18.2",
     "minimist": "^1.2.8",
     "node-rpsls": "^1.0.0"
   },
